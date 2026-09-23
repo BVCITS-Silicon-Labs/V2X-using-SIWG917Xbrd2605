@@ -1,0 +1,169 @@
+# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+project_name: v2_X
+label: v2_X
+description: |
+  V2X Autonomous Vehicle Platform: Integrated AI/ML gesture/motion recognition and Wi-Fi V2X/BSM telemetry on SiWG917.
+category: AI/ML & Wireless Application
+filter:
+- name: Capability
+  value:
+  - Machine Learning
+  - Wireless
+- name: Device Type
+  value:
+  - SoC
+- name: MCU
+  value:
+  - 32-bit MCU
+- name: Project Difficulty
+  value:
+  - Advanced
+- name: Wireless Technology
+  value:
+  - Wi-Fi
+package: wifi_v2x_app
+quality: production
+readme:
+- path: readme.md
+source:
+- path: main.c
+- path: app.c
+- path: accelerometer.c
+- path: rgb_led.c
+- path: bsm.c
+include:
+- path: .
+  file_list:
+  - path: app.h
+  - path: accelerometer.h
+  - path: bsm_packet.h
+  - path: constants.h
+  - path: rgb_led.h
+  - path: bsm.h
+sdk:
+  vendor: silabs
+  id: simplicity_sdk
+  version: 2025.12.3
+toolchain_settings:
+- value: -u _printf_float
+  option: gcc_linker_option
+- value: -Wall -Werror
+  option: gcc_compiler_option
+- value: -Wno-unused-parameter
+  option: gcc_compiler_option
+- value: -mfp16-format=ieee
+  option: gcc_compiler_option
+- value: -Wno-missing-field-initializers
+  option: gcc_compiler_option
+component:
+- package: simplicity_sdk
+  vendor: silabs
+  id: bootloader_gpio_activation
+- package: simplicity_sdk
+  vendor: silabs
+  id: emlib_common
+- package: simplicity_sdk
+  vendor: silabs
+  id: freertos
+- package: simplicity_sdk
+  vendor: silabs
+  id: freertos_heap_4
+- package: simplicity_sdk
+  vendor: silabs
+  id: sl_main
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: SIWG917M111MGTBA
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: basic_network_config_manager
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: brd2605a
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: bsd_socket
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: dma_ulp_component
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: network_manager
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: pm_ps2_component
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: si91x_memory_default_config
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_gpdma
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_icm40627
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_si91x_asynchronous_socket
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_si91x_internal_stack
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sl_si91x_mem_pool_buffers
+- package: wiseconnect3_sdk
+  instance:
+  - led0
+  vendor: silabs
+  id: sl_si91x_rgb_led_917
+- package: wiseconnect3_sdk
+  instance:
+  - ulp_primary
+  vendor: silabs
+  id: sl_ssi_instance
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: sleeptimer_si91x
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: ssi_ulp_component
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: syscalls
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: wifi
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: wifi_resources
+- package: wiseconnect3_sdk
+  vendor: silabs
+  id: wiseconnect_common
+define:
+- name: IMU_interrupt_PORT
+  value: UULP_VBAT
+- name: IMU_interrupt_PIN
+  value: '3'
+- name: SL_SI91X_PRINT_DBG_LOG
+requires:
+- name: device_needs_ram_execution
+configuration:
+- name: SL_BOARD_ENABLE_VCOM
+  value: '1'
+- name: SL_IOSTREAM_USART_VCOM_CONVERT_BY_DEFAULT_LF_TO_CRLF
+  value: '1'
+- name: SL_IOSTREAM_UART_VCOM_CONVERT_BY_DEFAULT_LF_TO_CRLF
+  value: '1'
+- name: SL_IOSTREAM_EUSART_VCOM_CONVERT_BY_DEFAULT_LF_TO_CRLF
+  value: '1'
+ui_hints:
+  highlight:
+  - path: readme.md
+    focus: true
+sdk_extension:
+- vendor: silabs
+  id: wiseconnect3_sdk
+  version: 4.0.2
+post_build:
+- path: v2_X.slpb
+  profile: wiseconnect_soc
+
