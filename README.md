@@ -94,6 +94,9 @@ Because both node variants share the same build lifecycle entry points (`app_ini
    * To build the **Station (Vehicle Node)**: Include `app_station.c` and exclude `app_soft_ap.c`, or copy/symlink `app_station.c` to `app.c`.
 3. Build the project using the GNU ARM Toolchain (`-u _printf_float` enabled)[cite: 3].
 4. Flash the generated `.rps` image via Simplicity Commander[cite: 3]:
+
+---
+   
 ### 7. Future Development
 
 The current architecture provides a deterministic, low-latency foundation for vehicle-to-everything communications. The extensible frame schema (`bsm_packet.h`) and hardware configuration (`v2_X.slcp`) are structured to support three key enhancements currently in engineering:
