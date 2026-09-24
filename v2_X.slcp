@@ -2,7 +2,7 @@
 project_name: v2_X
 label: v2_X
 description: |
-  V2X Autonomous Vehicle Platform: Integrated AI/ML gesture/motion recognition and Wi-Fi V2X/BSM telemetry on SiWG917.
+  V2X Autonomous Vehicle Platform: Real-time Wi-Fi V2X/BSM telemetry and ICM40627 IMU data acquisition on SiWG917, featuring extensible frame architecture for upcoming on-device AI/ML gesture and motion classification pipelines.
 category: AI/ML & Wireless Application
 filter:
 - name: Capability
@@ -166,4 +166,3 @@ sdk_extension:
 post_build:
 - path: v2_X.slpb
   profile: wiseconnect_soc
-
